@@ -1,0 +1,42 @@
+== LAB 1.1: IAM SETUP DOCUMENTATION ==
+DATE CREATED: 17/04/2026
+AWS Account ID: 821528308689
+
+ROLES CREATED: 
+
+1. DataEngineerRole
+Purpose: Main role for data engineers 
+Permissions: S3, Glue, Redshift, EMR, Kinesis, Lambda, Cloudwatch
+when used: Your daily work role
+ARN: arn: aws:iam:: 821528308689: role/DataEngineerRole
+
+2. GlueServiceRole
+Purpose: For Glue jobs to use
+Permissions: S3, CloudWatch Logs, Secrets Manager
+When used: When Glue jobs run
+ARN: arn:aws:iam::821528308689:role/GlueServiceRole
+
+
+3. LambdaExecutionRole
+Purpose: For Lambda functions to use
+Permissions: S3, DynamoDB, Kinesis, CloudWatch Logs, Secrets Manager
+When used: When Lambda code executes
+ARN: arn:aws:iam::821528308689:role/LambdaExecutionRole
+
+
+4. RedshiftIAMRole
+Purpose: For Redshift to access S3
+Permissions: S3, CloudWatch Logs
+When used: When Redshift runs COPY commands
+ARN: arn:aws:iam::821528308689:role/RedshiftIAMRole
+
+5. AnalystReadOnlyRole
+Purpose: For analysts to query data safely
+Permissions: Redshift (read-only), Athena, QuickSight, S3 (read-only)
+When used: Analyst queries and dashboards
+ARN: arn:aws:iam::821528308689:role/AnalystReadOnlyRole
+
+CUSTOM POLICIES:
+1. DataLakeBucketAccessPolicy
+Purpose: Restrict S3 access to data-lake buckets only
+Special feature: Blocks unencrypted uploads (security enforcement)
